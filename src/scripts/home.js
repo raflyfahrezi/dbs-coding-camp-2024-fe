@@ -1,7 +1,7 @@
 const TODOS = []
 const RENDER_EVENT = 'RENDER_EVENT'
 const STORAGE_KEY = 'TODO_APPS'
-const SAVED_EVENT = 'saved-todo'
+const SAVED_EVENT = 'SAVED_TODO'
 
 const formInput = document.getElementById('form-input')
 const nameFormInput = formInput.elements.name
@@ -23,6 +23,28 @@ const saveData = () => {
   }
 }
 
+const findTodoIndex = (todoId) => {
+  for (const index in TODOS) {
+    if (TODOS[index].id === todoId) {
+      return index
+    }
+  }
+
+  return -1
+}
+
+const deleteData = (id) => {
+  const todoTarget = findTodoIndex(id)
+
+  if (todoTarget === -1) return
+
+  TODOS.splice(todoTarget, 1)
+
+  saveData()
+
+  document.dispatchEvent(new Event(RENDER_EVENT))
+}
+
 const loadDataFromStorage = () => {
   const serializedData /* string */ = localStorage.getItem(STORAGE_KEY)
   let data = JSON.parse(serializedData)
@@ -37,7 +59,7 @@ const loadDataFromStorage = () => {
 }
 
 const makeTodo = (todo) => {
-  const { name, description } = todo
+  const { id, name, description } = todo
 
   const card = document.createElement('div')
   card.classList.add('card')
@@ -49,6 +71,15 @@ const makeTodo = (todo) => {
       <p>${description}</p>
   `
 
+  const deleteButton = document.createElement('button')
+  deleteButton.classList.add('btn', 'btn-danger')
+  deleteButton.style = 'width: 100%;'
+  deleteButton.innerHTML = 'Delete'
+  deleteButton.addEventListener('click', () => {
+    deleteData(id)
+  })
+
+  cardBody.append(deleteButton)
   card.append(cardBody)
 
   return card
