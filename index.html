@@ -32,6 +32,7 @@
     <div class="container">
       <div class="card">
         <form id="form-input" class="card-body c-card">
+          <div></div>
           <div class="c-form-item">
             <label for="form-input-todo">Nama</label>
             <input
@@ -60,6 +61,25 @@
             ></textarea>
             <p
               id="descriptionValidation"
+              class="text-danger"
+              aria-live="polite"
+            ></p>
+          </div>
+
+          <div class="c-form-item">
+            <label for="form-input-deadline">Deadline</label>
+            <input
+              type="date"
+              name="deadline"
+              class="form-control"
+              id="form-input-deadline"
+              placeholder="Membuat ayam goreng"
+              aria-describedby="deadlineValidation"
+              minlength="6"
+              required
+            />
+            <p
+              id="deadlineValidation"
               class="text-danger"
               aria-live="polite"
             ></p>
