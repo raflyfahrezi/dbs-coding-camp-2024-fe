@@ -40,8 +40,11 @@
               class="form-control"
               id="form-input-todo"
               placeholder="Memasak"
+              aria-describedby="nameValidation"
+              minlength="3"
               required
             />
+            <p id="nameValidation" class="text-danger" aria-live="polite"></p>
           </div>
 
           <div class="c-form-item">
@@ -51,8 +54,15 @@
               class="form-control"
               id="form-input-description"
               placeholder="Membuat ayam goreng"
+              aria-describedby="descriptionValidation"
+              minlength="6"
               required
             ></textarea>
+            <p
+              id="descriptionValidation"
+              class="text-danger"
+              aria-live="polite"
+            ></p>
           </div>
 
           <button class="btn btn-primary">Create</button>
