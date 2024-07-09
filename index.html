@@ -1,97 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TodoApp</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TodoApp</title>
 
-    <link rel="stylesheet" href="./src/styles/style.css" />
+        <link rel="stylesheet" href="./src/styles/style.css" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
 
-    <script type="module" src="./src/scripts/home.js"></script>
+        <script type="module" src="./src/scripts/home.js"></script>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <header class="c-header">
-      <nav>
-        <h1>Todo App</h1>
-      </nav>
-    </header>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header class="c-header">
+            <nav>
+                <h1>Todo App</h1>
+            </nav>
+        </header>
 
-    <div class="container">
-      <div class="card">
-        <form id="form-input" class="card-body c-card">
-          <div></div>
-          <div class="c-form-item">
-            <label for="form-input-todo">Nama</label>
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              id="form-input-todo"
-              placeholder="Memasak"
-              aria-describedby="nameValidation"
-              minlength="3"
-              required
-            />
-            <p id="nameValidation" class="text-danger" aria-live="polite"></p>
-          </div>
+        <div class="container">
+            <div class="card">
+                <form id="form-input" class="card-body c-card">
+                    <div class="c-form-item">
+                        <!-- TODO 2 : Create Form Input Nama -->
+                        <!-- Wajib diisi -->
+                        <!-- Minimal 3 Karakter -->
+                        <label for="input-nama">Nama</label>
+                        <input
+                            type="text"
+                            name="nama"
+                            id="input-nama"
+                            class="form-control"
+                            placeholder="mis : Belajar"
+                            aria-describedby="nama-description"
+                            minlength="3"
+                            required
+                        />
+                        <p
+                            id="nama-description"
+                            class="nama-message fs-6 fw-light"
+                            data-defaultText="Isi dengan nama kegiatan (min 3 karakter)"
+                        >
+                            Isi dengan nama kegiatan (min 3 karakter)
+                        </p>
+                    </div>
 
-          <div class="c-form-item">
-            <label for="form-input-description">Description</label>
-            <textarea
-              name="description"
-              class="form-control"
-              id="form-input-description"
-              placeholder="Membuat ayam goreng"
-              aria-describedby="descriptionValidation"
-              minlength="6"
-              required
-            ></textarea>
-            <p
-              id="descriptionValidation"
-              class="text-danger"
-              aria-live="polite"
-            ></p>
-          </div>
+                    <div class="c-form-item">
+                        <!-- TODO 3: Create Form Input Deskripsi-->
+                        <!-- Gunakan textarea -->
+                        <!--Wajib diisi  -->
+                        <!--minimal 6 karakter  -->
+                        <label for="input-deskripsi">Deskripsi</label>
+                        <textarea
+                            name="deskripsi"
+                            id="input-deskripsi"
+                            class="form-control"
+                            placeholder="mis : Belajar HTML, CSS, dan JavaScript"
+                            aria-describedby="deskripsi-description"
+                            minlength="6"
+                            required
+                        ></textarea>
+                        <p
+                            id="deskripsi-description"
+                            class="fs-6 fw-light"
+                            data-defaultText="Isi dengan deskripsi kegiatan (min 6 karakter)"
+                        >
+                            Isi dengan deskripsi kegiatan (min 6 karakter)
+                        </p>
+                    </div>
 
-          <div class="c-form-item">
-            <label for="form-input-deadline">Deadline</label>
-            <input
-              type="date"
-              name="deadline"
-              class="form-control"
-              id="form-input-deadline"
-              placeholder="Membuat ayam goreng"
-              aria-describedby="deadlineValidation"
-              minlength="6"
-              required
-            />
-            <p
-              id="deadlineValidation"
-              class="text-danger"
-              aria-live="polite"
-            ></p>
-          </div>
+                    <div class="c-form-item">
+                        <!-- TODO 4: Create Form Input Deadline -->
+                        <!-- Gunakan input type datetime-local -->
+                        <!-- Wajib diisi -->
+                        <!-- Validasi bahwa tanggal dan waktu belum terlewat -->
+                        <label for="input-deadline">Deadline</label>
+                        <input
+                            type="datetime-local"
+                            id="input-deadline"
+                            name="deadline"
+                            class="form-control"
+                            aria-describedby="deadline-description"
+                            required
+                        />
 
-          <button class="btn btn-primary">Create</button>
-        </form>
-      </div>
-    </div>
+                        <p
+                            id="deadline-description"
+                            class="fs-6 fw-light"
+                            data-defaultText="Klik tombol kalender untuk memilih tanggal dengan mudah"
+                        >
+                            Klik tombol kalender untuk memilih tanggal dengan
+                            mudah
+                        </p>
+                    </div>
 
-    <div class="container" style="padding-top: 20px">
-      <div id="todo-list" class="c-todo-list"></div>
-    </div>
-  </body>
+                    <button class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container" style="padding-top: 20px">
+            <div id="todo-list" class="c-todo-list"></div>
+        </div>
+    </body>
 </html>

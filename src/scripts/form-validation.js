@@ -1,114 +1,126 @@
 const formValidation = () => {
-  const formInput = document.getElementById('form-input')
-  const nameFormInput = formInput.elements.name
-  const descriptionFormInput = formInput.elements.description
-  const deadlineFormInput = formInput.elements.deadline
+    const formInput = document.getElementById("form-input");
+    const nameFormInput = formInput.elements.nama;
+    const descriptionFormInput = formInput.elements.deskripsi;
+    const deadlineFormInput = formInput.elements.deadline;
 
-  // Validation Name
+    const blurEventHandler = (event) => {
+        // Validate the field
+        const isValid = event.target.validity.valid;
+        const errorMessage = event.target.validationMessage;
 
-  const customValidationNameHandler = (event) => {
-    event.target.setCustomValidity('')
+        const connectedValidationId =
+            event.target.getAttribute("aria-describedby");
+        const connectedValidationEl = connectedValidationId
+            ? document.getElementById(connectedValidationId)
+            : null;
 
-    if (event.target.validity.valueMissing) {
-      event.target.setCustomValidity('Wajib diisi.')
-      return
-    }
+        if (connectedValidationEl && errorMessage && !isValid) {
+            connectedValidationEl.innerText = errorMessage;
+            connectedValidationEl.classList.remove("text-dark");
+            connectedValidationEl.classList.add("text-danger");
+        } else {
+            connectedValidationEl.innerText =
+                connectedValidationEl.dataset.defaulttext || "";
+            connectedValidationEl.classList.remove("text-danger");
+            connectedValidationEl.classList.add("text-dark");
+        }
+    };
 
-    if (event.target.validity.tooShort) {
-      event.target.setCustomValidity('Minimal panjang adalah 3 karakter.')
-      return
-    }
-  }
+    // TODO 12 : Validasi input nama
 
-  nameFormInput.addEventListener('change', customValidationNameHandler)
-  nameFormInput.addEventListener('invalid', customValidationNameHandler)
-  nameFormInput.addEventListener('blur', (event) => {
-    // Validate the field
-    const isValid = event.target.validity.valid
-    const errorMessage = event.target.validationMessage
+    // TODO 12.a : Buat fungsi event handler untuk validasi nama
+    const customValidationNameHandler = (event) => {
+        event.target.setCustomValidity("");
+        // TODO 12.b : Validasi jika tidak diisi
+        if (event.target.validity.valueMissing) {
+            event.target.setCustomValidity("Wajib diisi.");
+            return;
+        }
 
-    const connectedValidationId = event.target.getAttribute('aria-describedby')
-    const connectedValidationEl = connectedValidationId
-      ? document.getElementById(connectedValidationId)
-      : null
+        // TODO 12.c : Validasi jika terlalu pendek
 
-    if (connectedValidationEl && errorMessage && !isValid) {
-      connectedValidationEl.innerText = errorMessage
-    } else {
-      connectedValidationEl.innerText = ''
-    }
-  })
+        if (event.target.validity.tooShort) {
+            event.target.setCustomValidity(
+                "Minimal panjang adalah tiga karakter ya ges"
+            );
+            return;
+        }
+    };
 
-  // Validation Description
+    // TODO 12.d : Jadikan fungsi sebelumnya event listener untuk event change dan invalid
+    nameFormInput.addEventListener("change", customValidationNameHandler);
+    nameFormInput.addEventListener("invalid", customValidationNameHandler);
+    // TODO 12.e : Tambahkan event handler khusus untuk event blur
+    nameFormInput.addEventListener("blur", blurEventHandler);
 
-  const customValidationDescriptionHandler = (event) => {
-    event.target.setCustomValidity('')
+    // TODO 13 : Validasi input deskripsi
+    // TODO 13.a : Buat fungsi event handler untuk validasi deskripsi
 
-    if (event.target.validity.valueMissing) {
-      event.target.setCustomValidity('Wajib diisi.')
-      return
-    }
+    const customValidationDescriptionHandler = (event) => {
+        event.target.setCustomValidity("");
 
-    if (event.target.validity.tooShort) {
-      event.target.setCustomValidity('Minimal panjang adalah enam karakter.')
-      return
-    }
-  }
+        // TODO 13.b : Validasi jika tidak diisi
+        if (event.target.validity.valueMissing) {
+            event.target.setCustomValidity("Wajib diisi.");
+            return;
+        }
 
-  descriptionFormInput.addEventListener(
-    'change',
-    customValidationDescriptionHandler
-  )
-  descriptionFormInput.addEventListener(
-    'invalid',
-    customValidationDescriptionHandler
-  )
-  descriptionFormInput.addEventListener('blur', (event) => {
-    // Validate the field
-    const isValid = event.target.validity.valid
-    const errorMessage = event.target.validationMessage
+        // TODO 13.c : Validasi jika terlalu pendek
+        if (event.target.validity.tooShort) {
+            event.target.setCustomValidity(
+                "Minimal panjang adalah enam karakter."
+            );
+            return;
+        }
+    };
 
-    const connectedValidationId = event.target.getAttribute('aria-describedby')
-    const connectedValidationEl = connectedValidationId
-      ? document.getElementById(connectedValidationId)
-      : null
+    // TODO 13.d : Jadikan fungsi sebelumnya event listener untuk event change dan invalid
+    descriptionFormInput.addEventListener(
+        "change",
+        customValidationDescriptionHandler
+    );
+    descriptionFormInput.addEventListener(
+        "invalid",
+        customValidationDescriptionHandler
+    );
 
-    if (connectedValidationEl && errorMessage && !isValid) {
-      connectedValidationEl.innerText = errorMessage
-    } else {
-      connectedValidationEl.innerText = ''
-    }
-  })
+    // TODO 13.e : Tambahkan event handler khusus untuk event blur
+    descriptionFormInput.addEventListener("blur", blurEventHandler);
 
-  // Validation Description
+    // TODO 14 : Validasi input deadline
 
-  const customValidationDeadlineHandler = (event) => {
-    event.target.setCustomValidity('')
+    // TODO 14.a : Buat fungsi event handler untuk validasi deskripsi
+    const customValidationDeadlineHandler = (event) => {
+        event.target.setCustomValidity("");
 
-    if (event.target.validity.valueMissing) {
-      event.target.setCustomValidity('Wajib diisi.')
-      return
-    }
-  }
+        // TODO 14.b : Validasi jika tidak diisi
 
-  deadlineFormInput.addEventListener('change', customValidationDeadlineHandler)
-  deadlineFormInput.addEventListener('invalid', customValidationDeadlineHandler)
-  deadlineFormInput.addEventListener('blur', (event) => {
-    // Validate the field
-    const isValid = event.target.validity.valid
-    const errorMessage = event.target.validationMessage
+        if (event.target.validity.valueMissing) {
+            event.target.setCustomValidity("Wajib diisi.");
+            return;
+        }
+        og("halo");
+        // TODO 14.c : Validasi tanggal deadline harus lebih besar atau sama dengan tanggal sekarang
+        if (new Date(event.target.value) < Date.now()) {
+            event.target.setCustomValidity(
+                "Tanggal deadline harus lebih besar atau sama dengan tanggal sekarang."
+            );
+            return;
+        }
+    };
 
-    const connectedValidationId = event.target.getAttribute('aria-describedby')
-    const connectedValidationEl = connectedValidationId
-      ? document.getElementById(connectedValidationId)
-      : null
+    // TODO 14.d : Jadikan fungsi sebelumnya event listener untuk event change dan invalid
+    deadlineFormInput.addEventListener(
+        "change",
+        customValidationDeadlineHandler
+    );
+    deadlineFormInput.addEventListener(
+        "invalid",
+        customValidationDeadlineHandler
+    );
+    // TODO 14.e : Tambahkan event handler khusus untuk event blur
+    deadlineFormInput.addEventListener("blur", blurEventHandler);
+};
 
-    if (connectedValidationEl && errorMessage && !isValid) {
-      connectedValidationEl.innerText = errorMessage
-    } else {
-      connectedValidationEl.innerText = ''
-    }
-  })
-}
-
-export default formValidation
+export default formValidation;
