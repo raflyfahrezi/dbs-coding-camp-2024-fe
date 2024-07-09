@@ -86,20 +86,7 @@ const makeTodo = (todo) => {
 }
 
 formInput.addEventListener('submit', (e) => {
-  e.preventDefault()
-
-  const name = event.target.elements.name.value
-  const description = event.target.elements.description.value
-
-  TODOS.push({
-    id: new Date(),
-    name,
-    description,
-  })
-
-  document.dispatchEvent(new Event(RENDER_EVENT))
-
-  saveData()
+  // submit
 })
 
 document.addEventListener(RENDER_EVENT, function () {
