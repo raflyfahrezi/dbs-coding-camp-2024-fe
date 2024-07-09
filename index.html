@@ -25,7 +25,7 @@
   <body>
     <header class="c-header">
       <nav>
-        <h1>Todo App</h1>
+        <h1>Bookshelf App</h1>
       </nav>
     </header>
 
@@ -33,16 +33,13 @@
       <div class="card">
         <form id="form-input" class="card-body c-card">
           <div class="c-form-item">
-            <!-- TODO 2 : Create Form Input Nama -->
-            <!-- Wajib diisi -->
-            <!-- Minimal 3 Karakter -->
-            <label for="input-nama">Nama</label>
+            <label for="input-nama">Nama Buku</label>
             <input
               type="text"
               name="nama"
               id="input-nama"
               class="form-control"
-              placeholder="mis : Belajar"
+              placeholder="mis : Belajar JavaScript"
               aria-describedby="nama-description"
               minlength="3"
               required
@@ -50,33 +47,9 @@
             <p
               id="nama-description"
               class="nama-message fs-6 fw-light"
-              data-defaultText="Isi dengan nama kegiatan (min 3 karakter)"
+              data-defaultText="Isi dengan nama buku (min 3 karakter)"
             >
-              Isi dengan nama kegiatan (min 3 karakter)
-            </p>
-          </div>
-
-          <div class="c-form-item">
-            <!-- TODO 3: Create Form Input Deskripsi-->
-            <!-- Gunakan textarea -->
-            <!--Wajib diisi  -->
-            <!--minimal 6 karakter  -->
-            <label for="input-deskripsi">Deskripsi</label>
-            <textarea
-              name="deskripsi"
-              id="input-deskripsi"
-              class="form-control"
-              placeholder="mis : Belajar HTML, CSS, dan JavaScript"
-              aria-describedby="deskripsi-description"
-              minlength="6"
-              required
-            ></textarea>
-            <p
-              id="deskripsi-description"
-              class="fs-6 fw-light"
-              data-defaultText="Isi dengan deskripsi kegiatan (min 6 karakter)"
-            >
-              Isi dengan deskripsi kegiatan (min 6 karakter)
+              Isi dengan nama buku (min 3 karakter)
             </p>
           </div>
 
@@ -108,8 +81,6 @@
         </form>
       </div>
     </div>
-
-    <card name="test" description="asdasd"></card>
 
     <div class="container" style="padding-top: 20px">
       <div id="todo-list" class="c-todo-list-grid-responsive"></div>
