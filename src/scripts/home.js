@@ -94,23 +94,18 @@ const makeTodo = (todo) => {
 formInput.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // TODO 5 : Ambil data dari form field
     const name = formInput.elements.nama.value;
     const description = formInput.elements.deskripsi.value;
     const deadline = formInput.elements.deadline.value;
 
-    // TODO 6 : Tambahkan data ke TODOS array
     TODOS.push({
         id: +new Date(),
         name,
         description,
         deadline,
     });
-    // TODO 7 : Render data
     document.dispatchEvent(new Event(RENDER_EVENT));
-    // TODO 8 : Reset form
     formInput.reset();
-    // TODO 9 : Simpan data ke localStorage
     saveData();
 });
 
@@ -129,31 +124,8 @@ document.addEventListener(RENDER_EVENT, function () {
 
 document.addEventListener("DOMContentLoaded", () => {
     formValidation();
-    // TODO 10: ambil data dari localStorage
     if (isStorageExist()) {
         loadDataFromStorage();
     }
-    // TODO 11 : hapus starter data
-    // TODOS = [
-    //     {
-    //         name: "Belajar",
-    //         description: "Belajar JavaScript",
-    //         deadline: "2024-12-31",
-    //         id: +new Date(),
-    //     },
-    //     {
-    //         name: "Belajar React",
-    //         description: "Belajar React JS",
-    //         deadline: "2024-12-30",
-    //         id: +new Date(),
-    //     },
-    //     {
-    //         name: "Belajar Vue",
-    //         description: "Belajar Vue JS",
-    //         deadline: "2024-12-29",
-    //         id: +new Date(),
-    //     },
-    // ];
-    //  TODO 1 : Render data diatas
     document.dispatchEvent(new Event(RENDER_EVENT));
 });
