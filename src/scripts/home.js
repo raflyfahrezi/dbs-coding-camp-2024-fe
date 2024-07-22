@@ -61,21 +61,14 @@ const loadDataFromStorage = () => {
 const makeTodo = (todo) => {
   const { id, name, description, deadline } = todo
 
-  const card = document.createElement('div')
-  card.classList.add('card')
+  const wrapper = document.createElement('div')
+  wrapper.style = 'display: flex; flex-direction: column; gap: 20px;'
 
-  const cardBody = document.createElement('div')
-  cardBody.classList.add('card-body')
-  cardBody.innerHTML = `
-    <div>
-    <h3>${name}</h3>
-    <p class="mb-1">${description}</p>
-    <p style="font-size:0.7rem">Deadline : ${new Date(deadline).toLocaleString(
-      'id-ID',
-      { dateStyle: 'full', timeStyle: 'short' }
-    )}</p>
-    </div>
-  `
+  const card = document.createElement('my-card')
+  card.setAttribute('id', id)
+  card.setAttribute('name', name)
+  card.setAttribute('deadline', deadline)
+  card.setAttribute('description', description)
 
   const deleteButton = document.createElement('button')
   deleteButton.classList.add('btn', 'btn-danger')
@@ -85,10 +78,10 @@ const makeTodo = (todo) => {
     deleteData(id)
   })
 
-  cardBody.append(deleteButton)
-  card.append(cardBody)
+  wrapper.append(card)
+  wrapper.appendChild(deleteButton)
 
-  return card
+  return wrapper
 }
 
 formInput.addEventListener('submit', (e) => {
@@ -187,3 +180,5 @@ document.addEventListener('DOMContentLoaded', () => {
   //  TODO 1 : Render data diatas
   document.dispatchEvent(new Event(RENDER_EVENT))
 })
+
+import './card.js'
