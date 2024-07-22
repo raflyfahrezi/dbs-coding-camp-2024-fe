@@ -1,9 +1,7 @@
 class Heading extends HTMLElement {
   constructor() {
     super()
-  }
 
-  connectedCallback() {
     this.render()
   }
 
