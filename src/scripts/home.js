@@ -64,22 +64,7 @@ const makeTodo = (todo) => {
   const wrapper = document.createElement('div')
   wrapper.style = 'display: flex; flex-direction: column; gap: 20px;'
 
-  const card = document.createElement('my-card')
-  card.setAttribute('id', id)
-  card.setAttribute('name', name)
-  card.setAttribute('deadline', deadline)
-  card.setAttribute('description', description)
-
-  const deleteButton = document.createElement('button')
-  deleteButton.classList.add('btn', 'btn-danger')
-  deleteButton.style = 'width: 100%;'
-  deleteButton.innerHTML = 'Delete'
-  deleteButton.addEventListener('click', () => {
-    deleteData(id)
-  })
-
-  wrapper.append(card)
-  wrapper.appendChild(deleteButton)
+  // append card and delete button
 
   return wrapper
 }
