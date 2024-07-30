@@ -1,15 +1,20 @@
 body {
     font-family: "Quicksand", sans-serif;
+    width: 100vw;
+    display: block;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 * {
     box-sizing: border-box;
 }
+
 main {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding-right: 1rem;
-
     padding-left: 1rem;
 }
 
@@ -110,4 +115,8 @@ h1 {
 }
 .card .text-author {
     font-size: 1rem;
+}
+
+.text-danger {
+    color: #dc3545 !important;
 }
