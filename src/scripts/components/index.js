@@ -1,4 +1,1 @@
-import "./app-footer.js";
-import "./card.js";
-import "./delete-button.js";
-import "./form-control.js";
+// TODO 5 : IMPORT COMPONENT MU DISINI

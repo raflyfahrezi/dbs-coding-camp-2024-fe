@@ -25,14 +25,7 @@
         <main>
             <section id="book-form" class="card">
                 <form id="form-input" class="card-body c-card">
-                    <form-control
-                        input-name="title"
-                        label="Judul Buku"
-                        placeholder="mis : Belajar JavaScript Untuk Pemula"
-                        min-length="3"
-                        description="Isi dengan judul buku (min 3 karakter)"
-                    ></form-control>
-                    <!-- <div class="c-form-item">
+                    <div class="c-form-item">
                         <label for="input-title">Judul Buku</label>
                         <input
                             type="text"
@@ -51,15 +44,9 @@
                         >
                             Isi dengan nama buku (min 3 karakter)
                         </p>
-                    </div> -->
-                    <form-control
-                        input-name="author"
-                        label="Nama Penulis"
-                        placeholder="mis : Dicoding Indonesia"
-                        min-length="3"
-                        description="Isi dengan nama penulis buku (min 3 karakter)"
-                    ></form-control>
-                    <!-- <div class="c-form-item">
+                    </div>
+
+                    <div class="c-form-item">
                         <label for="input-author">Nama Penulis</label>
                         <input
                             type="text"
@@ -78,15 +65,9 @@
                         >
                             Isi dengan nama penulis buku (min 3 karakter)
                         </p>
-                    </div> -->
+                    </div>
 
-                    <form-control
-                        type="date"
-                        input-name="deadline"
-                        label="Tanggal Harus Dikembalikan"
-                        description="Isi dengan nama penulis buku (min 3 karakter)"
-                    ></form-control>
-                    <!-- <div class="c-form-item">
+                    <div class="c-form-item">
                         <label for="input-deadline"
                             >Tanggal Harus Dikembalikan</label
                         >
@@ -107,20 +88,20 @@
                             Klik tombol kalender untuk memilih tanggal dengan
                             mudah
                         </p>
-                    </div> -->
+                    </div>
 
                     <button class="btn btn-primary" id="save-button">
                         Simpan
                     </button>
                 </form>
             </section>
-
+            <!-- TODO 1 : Menampilkan Daftar Catatan -->
             <section class="book-container" id="book-container">
                 <h2>Daftar Buku yang dipinjam</h2>
                 <div id="book-lists"></div>
             </section>
         </main>
 
-        <!-- <app-footer></app-footer> -->
+        <app-footer></app-footer>
     </body>
 </html>

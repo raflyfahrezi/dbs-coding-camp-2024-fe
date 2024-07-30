@@ -1,6 +1,6 @@
 import "./components/index.js";
 import formValidation from "./form-validation.js";
-import BOOKS_DUMMY from "../BOOKS.js";
+
 let BOOKS = [];
 const RENDER_EVENT = "RENDER_EVENT";
 
@@ -64,11 +64,9 @@ document.addEventListener(RENDER_EVENT, function () {
 
 document.addEventListener("DOMContentLoaded", () => {
     formValidation();
-    if (!localStorage.getItem("books")) {
-        localStorage.setItem("books", JSON.stringify(BOOKS_DUMMY));
-        BOOKS = JSON.parse(localStorage.getItem("books"));
-    } else {
-        BOOKS = JSON.parse(localStorage.getItem("books")) || [];
-    }
+    // TODO 2 : Import data dummy dari BOOKS js
+
+    BOOKS = JSON.parse(localStorage.getItem("books")) || [];
+
     document.dispatchEvent(new Event(RENDER_EVENT));
 });

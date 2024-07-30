@@ -34,10 +34,7 @@ h1 {
 }
 
 #book-lists {
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    display: grid;
-    align-items: stretch;
+    /* TODO 8 : Gunakan Grid */
     margin-top: 1rem;
 }
 

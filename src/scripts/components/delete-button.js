@@ -1,3 +1,4 @@
+// TODO 6 : Buatkan Component Delete Button
 class DeleteButton extends HTMLElement {
     constructor() {
         super();

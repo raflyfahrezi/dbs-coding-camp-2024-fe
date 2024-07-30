@@ -1,3 +1,4 @@
+//  TODO 3 : Selesaikan pembuatan BookItem ini
 class BookItem extends HTMLElement {
     static observedAttributes = [
         "id",
@@ -9,37 +10,15 @@ class BookItem extends HTMLElement {
 
     constructor() {
         super();
-
-        this._id = this.getAttribute("id");
-        this._title = this.getAttribute("title");
-        this._author = this.getAttribute("author");
-        this["_borrowing-date"] = this.getAttribute("borrowing-date");
-        this._deadline = this.getAttribute("deadline");
     }
 
-    handleDelete() {
-        const id = parseInt(event.target.dataset.id);
-        this.dispatchEvent(
-            new CustomEvent("book-delete", {
-                detail: {
-                    id,
-                },
-                bubbles: true,
-            })
-        );
-    }
+    handleDelete() {}
     connectedCallback() {
         this.render();
-        const deleteButton = this.querySelector("delete-button");
-        if (deleteButton) {
-            deleteButton.addEventListener("click", this.handleDelete);
-        }
     }
 
     disconnectedCallback() {
         const deleteButton = this.querySelector("delete-button");
-
-        deleteButton.removeEventListener("click", this.handleDelete);
     }
 
     render() {

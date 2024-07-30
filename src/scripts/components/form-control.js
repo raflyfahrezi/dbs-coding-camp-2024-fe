@@ -1,4 +1,4 @@
-const css = (a) => a;
+// TODO 10: Untuk penggunaan custom attribute di HTML
 class FormControl extends HTMLElement {
     static observedAttributes = [
         "type",
