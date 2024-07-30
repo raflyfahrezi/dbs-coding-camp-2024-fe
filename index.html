@@ -1,89 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TodoApp</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Peminjaman Buku</title>
 
-    <link rel="stylesheet" href="./src/styles/style.css" />
+        <link rel="stylesheet" href="./src/styles/style.css" />
+        <script type="module" src="./src/scripts/home.js"></script>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <h1>Peminjaman Buku</h1>
+            </nav>
+        </header>
 
-    <script type="module" src="./src/scripts/home.js"></script>
+        <main>
+            <section id="book-form" class="card">
+                <form id="form-input" class="card-body c-card">
+                    <form-control
+                        input-name="title"
+                        label="Judul Buku"
+                        placeholder="mis : Belajar JavaScript Untuk Pemula"
+                        min-length="3"
+                        description="Isi dengan judul buku (min 3 karakter)"
+                    ></form-control>
+                    <!-- <div class="c-form-item">
+                        <label for="input-title">Judul Buku</label>
+                        <input
+                            type="text"
+                            name="title"
+                            id="input-title"
+                            class="form-control"
+                            placeholder="mis : Belajar JavaScript Untuk Pemula"
+                            aria-describedby="title-description"
+                            minlength="3"
+                            required
+                        />
+                        <p
+                            id="title-description"
+                            class="title-message fs-6 fw-light"
+                            data-defaultText="Isi dengan nama buku (min 3 karakter)"
+                        >
+                            Isi dengan nama buku (min 3 karakter)
+                        </p>
+                    </div> -->
+                    <form-control
+                        input-name="author"
+                        label="Nama Penulis"
+                        placeholder="mis : Dicoding Indonesia"
+                        min-length="3"
+                        description="Isi dengan nama penulis buku (min 3 karakter)"
+                    ></form-control>
+                    <!-- <div class="c-form-item">
+                        <label for="input-author">Nama Penulis</label>
+                        <input
+                            type="text"
+                            name="author"
+                            id="input-author"
+                            class="form-control"
+                            placeholder="mis : Dicoding Indonesia"
+                            aria-describedby="author-description"
+                            minlength="3"
+                            required
+                        />
+                        <p
+                            id="author-description"
+                            class="author-message fs-6 fw-light"
+                            data-defaultText="Isi dengan nama penulis buku (min 3 karakter)"
+                        >
+                            Isi dengan nama penulis buku (min 3 karakter)
+                        </p>
+                    </div> -->
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <header class="c-header">
-      <nav>
-        <h1>Bookshelf App</h1>
-      </nav>
-    </header>
+                    <form-control
+                        type="date"
+                        input-name="deadline"
+                        label="Tanggal Harus Dikembalikan"
+                        description="Isi dengan nama penulis buku (min 3 karakter)"
+                    ></form-control>
+                    <!-- <div class="c-form-item">
+                        <label for="input-deadline"
+                            >Tanggal Harus Dikembalikan</label
+                        >
+                        <input
+                            type="date"
+                            id="input-deadline"
+                            name="deadline"
+                            class="form-control"
+                            aria-describedby="deadline-description"
+                            required
+                        />
 
-    <div class="container">
-      <div class="card">
-        <form id="form-input" class="card-body c-card">
-          <div class="c-form-item">
-            <label for="input-nama">Nama Buku</label>
-            <input
-              type="text"
-              name="nama"
-              id="input-nama"
-              class="form-control"
-              placeholder="mis : Belajar JavaScript"
-              aria-describedby="nama-description"
-              minlength="3"
-              required
-            />
-            <p
-              id="nama-description"
-              class="nama-message fs-6 fw-light"
-              data-defaultText="Isi dengan nama buku (min 3 karakter)"
-            >
-              Isi dengan nama buku (min 3 karakter)
-            </p>
-          </div>
+                        <p
+                            id="deadline-description"
+                            class="fs-6 fw-light"
+                            data-defaultText="Klik tombol kalender untuk memilih tanggal dengan mudah"
+                        >
+                            Klik tombol kalender untuk memilih tanggal dengan
+                            mudah
+                        </p>
+                    </div> -->
 
-          <div class="c-form-item">
-            <!-- TODO 4: Create Form Input Deadline -->
-            <!-- Gunakan input type datetime-local -->
-            <!-- Wajib diisi -->
-            <!-- Validasi bahwa tanggal dan waktu belum terlewat -->
-            <label for="input-deadline">Deadline</label>
-            <input
-              type="datetime-local"
-              id="input-deadline"
-              name="deadline"
-              class="form-control"
-              aria-describedby="deadline-description"
-              required
-            />
+                    <button class="btn btn-primary" id="save-button">
+                        Simpan
+                    </button>
+                </form>
+            </section>
 
-            <p
-              id="deadline-description"
-              class="fs-6 fw-light"
-              data-defaultText="Klik tombol kalender untuk memilih tanggal dengan mudah"
-            >
-              Klik tombol kalender untuk memilih tanggal dengan mudah
-            </p>
-          </div>
+            <section class="book-container" id="book-container">
+                <h2>Daftar Buku yang dipinjam</h2>
+                <div id="book-lists"></div>
+            </section>
+        </main>
 
-          <button class="btn btn-primary">Create</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="container" style="padding-top: 20px">
-      <div id="todo-list" class="c-todo-list-grid-responsive"></div>
-    </div>
-  </body>
+        <app-footer></app-footer>
+    </body>
 </html>

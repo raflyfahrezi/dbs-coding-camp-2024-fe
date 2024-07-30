@@ -1,89 +1,74 @@
-import formValidation from './form-validation.js'
+import "./components/index.js";
+import formValidation from "./form-validation.js";
+import BOOKS_DUMMY from "../BOOKS.js";
+let BOOKS = [];
+const RENDER_EVENT = "RENDER_EVENT";
 
-let TODOS = []
-const RENDER_EVENT = 'RENDER_EVENT'
+const formInput = document.getElementById("form-input");
 
-const formInput = document.getElementById('form-input')
+function saveToStorage() {
+    localStorage.setItem("books", JSON.stringify(BOOKS));
+}
 
-const findTodoIndex = (todoId) => {
-  for (const index in TODOS) {
-    if (TODOS[index].id === todoId) {
-      return index
+formInput.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const title = formInput.elements.title.value;
+    const author = formInput.elements.author.value;
+    const deadline = formInput.elements.deadline.value;
+
+    const newBook = {
+        id: +new Date(),
+        title,
+        author,
+        borrowing_date: new Date().toISOString(),
+        deadline: new Date(deadline).toISOString(),
+    };
+    BOOKS.push(newBook);
+    saveToStorage();
+    document.dispatchEvent(new Event(RENDER_EVENT));
+
+    formInput.reset();
+});
+function deleteBook(bookId) {
+    const index = BOOKS.findIndex((book) => book.id === bookId);
+    if (index !== -1) {
+        BOOKS.splice(index, 1);
+        saveToStorage();
+        document.dispatchEvent(new Event(RENDER_EVENT));
     }
-  }
-
-  return -1
 }
-
-const deleteData = (id) => {
-  const todoTarget = findTodoIndex(id)
-
-  if (todoTarget === -1) return
-
-  TODOS.splice(todoTarget, 1)
-
-  document.dispatchEvent(new Event(RENDER_EVENT))
+function createBookElement(bookItem) {
+    const bookElement = document.createElement("book-item");
+    bookElement.setAttribute("id", bookItem.id);
+    bookElement.setAttribute("title", bookItem.title);
+    bookElement.setAttribute("author", bookItem.author);
+    bookElement.setAttribute("deadline", bookItem.deadline);
+    bookElement.setAttribute("borrowing-date", bookItem.borrowing_date);
+    bookElement.addEventListener("book-delete", (event) => {
+        const bookId = event.detail.id;
+        deleteBook(bookId);
+    });
+    return bookElement;
 }
-
-const makeTodo = (todo) => {
-  const { id, name, deadline } = todo
-
-  const wrapper = document.createElement('div')
-  wrapper.style = 'display: flex; flex-direction: column; gap: 20px;'
-
-  const card = document.createElement('my-card')
-  card.setAttribute('id', id)
-  card.setAttribute('name', name)
-  card.setAttribute('deadline', deadline)
-
-  const deleteButton = document.createElement('button')
-  deleteButton.classList.add('btn', 'btn-danger')
-  deleteButton.style = 'width: 100%;'
-  deleteButton.innerHTML = 'Delete'
-  deleteButton.addEventListener('click', () => {
-    deleteData(id)
-  })
-
-  wrapper.append(card)
-  wrapper.appendChild(deleteButton)
-
-  return wrapper
-}
-
-formInput.addEventListener('submit', (e) => {
-  e.preventDefault()
-
-  const name = formInput.elements.nama.value
-  const deadline = formInput.elements.deadline.value
-
-  TODOS.push({
-    id: +new Date(),
-    name,
-    deadline,
-  })
-
-  document.dispatchEvent(new Event(RENDER_EVENT))
-
-  formInput.reset()
-})
 
 document.addEventListener(RENDER_EVENT, function () {
-  const todoList = document.getElementById('todo-list')
+    const bookList = document.getElementById("book-lists");
 
-  // clearing todo list item
-  todoList.innerHTML = ''
+    bookList.innerHTML = "";
 
-  for (const todoItem of TODOS) {
-    const todoElement = makeTodo(todoItem)
+    for (const bookItem of BOOKS) {
+        bookList.append(createBookElement(bookItem));
+    }
+});
 
-    todoList.append(todoElement)
-  }
-})
-
-document.addEventListener('DOMContentLoaded', () => {
-  formValidation()
-
-  document.dispatchEvent(new Event(RENDER_EVENT))
-})
-
-import './card.js'
+document.addEventListener("DOMContentLoaded", () => {
+    formValidation();
+    if (!localStorage.getItem("books")) {
+        localStorage.setItem("books", JSON.stringify(BOOKS_DUMMY));
+        BOOKS = JSON.parse(localStorage.getItem("books"));
+    } else {
+        BOOKS = JSON.parse(localStorage.getItem("books")) || [];
+    }
+    document.dispatchEvent(new Event(RENDER_EVENT));
+});
