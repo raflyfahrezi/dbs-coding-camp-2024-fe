@@ -1,7 +1,6 @@
 const formValidation = () => {
   const formInput = document.getElementById('form-input')
   const nameFormInput = formInput.elements.nama
-  const descriptionFormInput = formInput.elements.deskripsi
   const deadlineFormInput = formInput.elements.deadline
 
   const blurEventHandler = (event) => {

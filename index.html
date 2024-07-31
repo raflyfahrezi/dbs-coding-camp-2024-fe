@@ -32,50 +32,11 @@
     <div class="container">
       <div class="card">
         <form id="form-input" class="card-body c-card">
-          <div class="c-form-item">
-            <label for="input-nama">Nama Buku</label>
-            <input
-              type="text"
-              name="nama"
-              id="input-nama"
-              class="form-control"
-              placeholder="mis : Belajar JavaScript"
-              aria-describedby="nama-description"
-              minlength="3"
-              required
-            />
-            <p
-              id="nama-description"
-              class="nama-message fs-6 fw-light"
-              data-defaultText="Isi dengan nama buku (min 3 karakter)"
-            >
-              Isi dengan nama buku (min 3 karakter)
-            </p>
-          </div>
+          <!-- Input Nama Buku -->
+          <div class="c-form-item"></div>
 
-          <div class="c-form-item">
-            <!-- TODO 4: Create Form Input Deadline -->
-            <!-- Gunakan input type datetime-local -->
-            <!-- Wajib diisi -->
-            <!-- Validasi bahwa tanggal dan waktu belum terlewat -->
-            <label for="input-deadline">Deadline</label>
-            <input
-              type="datetime-local"
-              id="input-deadline"
-              name="deadline"
-              class="form-control"
-              aria-describedby="deadline-description"
-              required
-            />
-
-            <p
-              id="deadline-description"
-              class="fs-6 fw-light"
-              data-defaultText="Klik tombol kalender untuk memilih tanggal dengan mudah"
-            >
-              Klik tombol kalender untuk memilih tanggal dengan mudah
-            </p>
-          </div>
+          <!-- Input Deadline Buku -->
+          <div class="c-form-item"></div>
 
           <button class="btn btn-primary">Create</button>
         </form>
@@ -83,7 +44,7 @@
     </div>
 
     <div class="container" style="padding-top: 20px">
-      <div id="todo-list" class="c-todo-list-grid-responsive"></div>
+      <div id="todo-list" class="c-todo-list"></div>
     </div>
   </body>
 </html>

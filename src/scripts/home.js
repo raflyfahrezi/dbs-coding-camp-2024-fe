@@ -31,21 +31,7 @@ const makeTodo = (todo) => {
   const wrapper = document.createElement('div')
   wrapper.style = 'display: flex; flex-direction: column; gap: 20px;'
 
-  const card = document.createElement('my-card')
-  card.setAttribute('id', id)
-  card.setAttribute('name', name)
-  card.setAttribute('deadline', deadline)
-
-  const deleteButton = document.createElement('button')
-  deleteButton.classList.add('btn', 'btn-danger')
-  deleteButton.style = 'width: 100%;'
-  deleteButton.innerHTML = 'Delete'
-  deleteButton.addEventListener('click', () => {
-    deleteData(id)
-  })
-
-  wrapper.append(card)
-  wrapper.appendChild(deleteButton)
+  // add todo
 
   return wrapper
 }
@@ -55,6 +41,8 @@ formInput.addEventListener('submit', (e) => {
 
   const name = formInput.elements.nama.value
   const deadline = formInput.elements.deadline.value
+
+  console.log(deadline)
 
   TODOS.push({
     id: +new Date(),
