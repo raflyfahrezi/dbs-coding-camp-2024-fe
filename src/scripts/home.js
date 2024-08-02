@@ -1,6 +1,7 @@
 import "./components/index.js";
 import formValidation from "./form-validation.js";
 import BOOKS_DUMMY from "../BOOKS.js";
+
 let BOOKS = [];
 const RENDER_EVENT = "RENDER_EVENT";
 
@@ -38,13 +39,14 @@ function deleteBook(bookId) {
         document.dispatchEvent(new Event(RENDER_EVENT));
     }
 }
-function createBookElement(bookItem) {
+function createBookElement(bookItem, index) {
     const bookElement = document.createElement("book-item");
     bookElement.setAttribute("id", bookItem.id);
     bookElement.setAttribute("title", bookItem.title);
     bookElement.setAttribute("author", bookItem.author);
     bookElement.setAttribute("deadline", bookItem.deadline);
     bookElement.setAttribute("borrowing-date", bookItem.borrowing_date);
+    bookElement.setAttribute("index", index);
     bookElement.addEventListener("book-delete", (event) => {
         const bookId = event.detail.id;
         deleteBook(bookId);
@@ -56,14 +58,16 @@ document.addEventListener(RENDER_EVENT, function () {
     const bookList = document.getElementById("book-lists");
 
     bookList.innerHTML = "";
-
+    let index = 1;
     for (const bookItem of BOOKS) {
-        bookList.append(createBookElement(bookItem));
+        bookList.append(createBookElement(bookItem, index));
+        index++;
     }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
     formValidation();
+    window.AOS.init();
     if (!localStorage.getItem("books")) {
         localStorage.setItem("books", JSON.stringify(BOOKS_DUMMY));
         BOOKS = JSON.parse(localStorage.getItem("books"));

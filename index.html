@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="./src/styles/style.css" />
         <script type="module" src="./src/scripts/home.js"></script>
-
+        <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -24,7 +24,11 @@
 
         <main>
             <section id="book-form" class="card">
-                <form id="form-input" class="card-body c-card">
+                <form
+                    id="form-input"
+                    class="card-body c-card"
+                    data-aos="fade-down"
+                >
                     <form-control
                         input-name="title"
                         label="Judul Buku"
@@ -32,26 +36,6 @@
                         min-length="3"
                         description="Isi dengan judul buku (min 3 karakter)"
                     ></form-control>
-                    <!-- <div class="c-form-item">
-                        <label for="input-title">Judul Buku</label>
-                        <input
-                            type="text"
-                            name="title"
-                            id="input-title"
-                            class="form-control"
-                            placeholder="mis : Belajar JavaScript Untuk Pemula"
-                            aria-describedby="title-description"
-                            minlength="3"
-                            required
-                        />
-                        <p
-                            id="title-description"
-                            class="title-message fs-6 fw-light"
-                            data-defaultText="Isi dengan nama buku (min 3 karakter)"
-                        >
-                            Isi dengan nama buku (min 3 karakter)
-                        </p>
-                    </div> -->
                     <form-control
                         input-name="author"
                         label="Nama Penulis"
@@ -59,26 +43,6 @@
                         min-length="3"
                         description="Isi dengan nama penulis buku (min 3 karakter)"
                     ></form-control>
-                    <!-- <div class="c-form-item">
-                        <label for="input-author">Nama Penulis</label>
-                        <input
-                            type="text"
-                            name="author"
-                            id="input-author"
-                            class="form-control"
-                            placeholder="mis : Dicoding Indonesia"
-                            aria-describedby="author-description"
-                            minlength="3"
-                            required
-                        />
-                        <p
-                            id="author-description"
-                            class="author-message fs-6 fw-light"
-                            data-defaultText="Isi dengan nama penulis buku (min 3 karakter)"
-                        >
-                            Isi dengan nama penulis buku (min 3 karakter)
-                        </p>
-                    </div> -->
 
                     <form-control
                         type="date"
@@ -86,28 +50,6 @@
                         label="Tanggal Harus Dikembalikan"
                         description="Isi dengan nama penulis buku (min 3 karakter)"
                     ></form-control>
-                    <!-- <div class="c-form-item">
-                        <label for="input-deadline"
-                            >Tanggal Harus Dikembalikan</label
-                        >
-                        <input
-                            type="date"
-                            id="input-deadline"
-                            name="deadline"
-                            class="form-control"
-                            aria-describedby="deadline-description"
-                            required
-                        />
-
-                        <p
-                            id="deadline-description"
-                            class="fs-6 fw-light"
-                            data-defaultText="Klik tombol kalender untuk memilih tanggal dengan mudah"
-                        >
-                            Klik tombol kalender untuk memilih tanggal dengan
-                            mudah
-                        </p>
-                    </div> -->
 
                     <button class="btn btn-primary" id="save-button">
                         Simpan
@@ -121,6 +63,7 @@
             </section>
         </main>
 
-        <!-- <app-footer></app-footer> -->
+        <app-footer></app-footer>
+        <script src="node_modules/aos/dist/aos.js"></script>
     </body>
 </html>

@@ -5,6 +5,7 @@ class BookItem extends HTMLElement {
         "author",
         "borrowing-date",
         "deadline",
+        "index",
     ];
 
     constructor() {
@@ -15,6 +16,7 @@ class BookItem extends HTMLElement {
         this._author = this.getAttribute("author");
         this["_borrowing-date"] = this.getAttribute("borrowing-date");
         this._deadline = this.getAttribute("deadline");
+        this._index = parseInt(this.getAttribute("index"));
     }
 
     handleDelete() {
@@ -44,7 +46,9 @@ class BookItem extends HTMLElement {
 
     render() {
         this.innerHTML = `
-            <div class="card">
+            <div class="card" data-aos="flip-up" data-aos-duration="500" data-aos-delay="${
+                50 * this._index
+            }">
                 <div>
                     <p class="text-title">${this._title}</p>
                     <p class="text-author">Penulis : ${this._author}</p>

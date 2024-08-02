@@ -1,0 +1,14 @@
+{
+  "name": "bookshelf-app",
+  "version": "1.0.0",
+  "description": "Bookshelf App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aos": "^3.0.0-beta.6"
+  }
+}
