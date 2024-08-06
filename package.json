@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aos": "^3.0.0-beta.6"
+    "aos": "^3.0.0-beta.6",
+    "install": "^0.13.0",
+    "npm": "^10.8.2",
+    "sweetalert2": "^11.12.4"
   }
 }

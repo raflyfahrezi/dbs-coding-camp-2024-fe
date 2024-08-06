@@ -57,7 +57,7 @@ const formValidation = () => {
             return;
         }
 
-        if (new Date(event.target.value) < Date.now()) {
+        if (new Date(event.target.value) <= Date.now()) {
             event.target.setCustomValidity(
                 "Tanggal deadline harus lebih besar atau sama dengan tanggal sekarang."
             );

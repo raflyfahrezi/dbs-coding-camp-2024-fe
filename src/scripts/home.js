@@ -27,17 +27,41 @@ formInput.addEventListener("submit", (e) => {
     };
     BOOKS.push(newBook);
     saveToStorage();
+    Sweetalert2.fire({
+        title: "Buku berhasil ditambahkan",
+        icon: "success",
+        confirmButtonText: "OK",
+    });
     document.dispatchEvent(new Event(RENDER_EVENT));
 
     formInput.reset();
 });
 function deleteBook(bookId) {
-    const index = BOOKS.findIndex((book) => book.id === bookId);
-    if (index !== -1) {
-        BOOKS.splice(index, 1);
-        saveToStorage();
-        document.dispatchEvent(new Event(RENDER_EVENT));
-    }
+    Sweetalert2.fire({
+        title: "Anda Yakin?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya",
+        cancelButtonText: "Batal",
+        cancelButtonColor: "red",
+        confirmButtonColor: "blue",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const index = BOOKS.findIndex((book) => book.id === bookId);
+            if (index !== -1) {
+                BOOKS.splice(index, 1);
+                saveToStorage();
+                Sweetalert2.fire({
+                    title: "Buku berhasil dihapus",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    position: "top-end",
+                });
+                document.dispatchEvent(new Event(RENDER_EVENT));
+            }
+        }
+    });
 }
 function createBookElement(bookItem, index) {
     const bookElement = document.createElement("book-item");
@@ -67,7 +91,7 @@ document.addEventListener(RENDER_EVENT, function () {
 
 document.addEventListener("DOMContentLoaded", () => {
     formValidation();
-    window.AOS.init();
+    AOS.init();
     if (!localStorage.getItem("books")) {
         localStorage.setItem("books", JSON.stringify(BOOKS_DUMMY));
         BOOKS = JSON.parse(localStorage.getItem("books"));

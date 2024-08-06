@@ -6,8 +6,11 @@
         <title>Peminjaman Buku</title>
 
         <link rel="stylesheet" href="./src/styles/style.css" />
-        <script type="module" src="./src/scripts/home.js"></script>
         <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
+        <link
+            rel="stylesheet"
+            href="node_modules/sweetalert2/dist/sweetalert2.min.css"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -48,7 +51,7 @@
                         type="date"
                         input-name="deadline"
                         label="Tanggal Harus Dikembalikan"
-                        description="Isi dengan nama penulis buku (min 3 karakter)"
+                        description="Klik tombol disebelah kanan untuk memilih tanggal dengan mudah"
                     ></form-control>
 
                     <button class="btn btn-primary" id="save-button">
@@ -64,6 +67,11 @@
         </main>
 
         <app-footer></app-footer>
+        <script
+            type="module"
+            src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"
+        ></script>
         <script src="node_modules/aos/dist/aos.js"></script>
+        <script type="module" src="./src/scripts/home.js"></script>
     </body>
 </html>
