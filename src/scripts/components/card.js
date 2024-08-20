@@ -20,11 +20,20 @@ class BookItem extends HTMLElement {
     }
 
     handleDelete() {
-        const id = parseInt(event.target.dataset.id);
         this.dispatchEvent(
             new CustomEvent("book-delete", {
                 detail: {
-                    id,
+                    id: this._id,
+                },
+                bubbles: true,
+            })
+        );
+    }
+    handleUpdate() {
+        this.dispatchEvent(
+            new CustomEvent("book-update", {
+                detail: {
+                    id: this._id,
                 },
                 bubbles: true,
             })
@@ -32,16 +41,6 @@ class BookItem extends HTMLElement {
     }
     connectedCallback() {
         this.render();
-        const deleteButton = this.querySelector("delete-button");
-        if (deleteButton) {
-            deleteButton.addEventListener("click", this.handleDelete);
-        }
-    }
-
-    disconnectedCallback() {
-        const deleteButton = this.querySelector("delete-button");
-
-        deleteButton.removeEventListener("click", this.handleDelete);
     }
 
     render() {
@@ -52,25 +51,21 @@ class BookItem extends HTMLElement {
                 <div>
                     <p class="text-title">${this._title}</p>
                     <p class="text-author">Penulis : ${this._author}</p>
-                    <p class="text-small">
-                        Tanggal Pinjam :
-                        ${new Date(this["_borrowing-date"]).toLocaleDateString(
-                            "id-ID",
-                            {
-                                dateStyle: "full",
-                            }
-                        )}
-                    </p>
-                    <p class="text-small">
-                        Tanggal Dikembalikan :
-                        ${new Date(this._deadline).toLocaleDateString("id-ID", {
-                            dateStyle: "full",
-                        })}
-                    </p>
+                    
                 </div>
                 <delete-button data-id=${this._id}></delete-button>
+                <edit-button data-id=${this._id}></edit-button>
             </div>
         `;
+        const deleteButton = this.querySelector("delete-button");
+        const editButton = this.querySelector("edit-button");
+
+        if (deleteButton) {
+            deleteButton.addEventListener("click", this.handleDelete);
+        }
+        if (editButton) {
+            editButton.addEventListener("click", this.handleUpdate);
+        }
     }
 
     attributeChangedCallback(name, oldValue, newValue) {

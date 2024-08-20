@@ -1,4 +1,4 @@
-class DeleteButton extends HTMLElement {
+class EditButton extends HTMLElement {
     constructor() {
         super();
         this._shadowRoot = this.attachShadow({ mode: "open" });
@@ -13,19 +13,17 @@ class DeleteButton extends HTMLElement {
             <style>
                 button {
                     color: #fff;
-                    background-color: #d9534f;
-                    border-color: #d43f3a;
+                    background-color: #20c997;
                     width:100%;
                     padding: 6px;
                     border-radius: 4px;
                     border: none;
                     cursor: pointer;
-                    margin-bottom: 0.25rem
                 }
             </style>
-            <button>Hapus</button>
+            <button>Edit</button>
         `;
     }
 }
 
-customElements.define("delete-button", DeleteButton);
+customElements.define("edit-button", EditButton);
