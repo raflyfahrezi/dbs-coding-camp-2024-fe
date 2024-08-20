@@ -1,10 +1,8 @@
 import "./components/index.js";
-import formValidation from "./form-validation.js";
-import Swal, * as Sweetalert2 from "sweetalert2";
+import * as Sweetalert2 from "sweetalert2";
 import AOS from "aos";
 import "../styles/style.css";
 import "aos/dist/aos.css";
-import { addBook, getAllBooks, deleteBook, editBook } from "./data/api.js";
 
 const RENDER_EVENT = "RENDER_EVENT";
 
@@ -23,7 +21,6 @@ formInput.addEventListener("submit", async (e) => {
     };
 
     // TODO : panggil function addBook
-    await addBook(newBook);
 
     Sweetalert2.fire({
         title: "Buku berhasil ditambahkan",
@@ -47,7 +44,7 @@ function deleteBookHandler(bookId) {
     }).then(async (result) => {
         if (result.isConfirmed) {
             // TODO : panggil function deleteBook
-            await deleteBook(bookId);
+
             Sweetalert2.fire({
                 title: "Buku berhasil dihapus",
                 icon: "success",
@@ -88,7 +85,6 @@ async function updateBookHandler(bookId, title, author) {
                 };
 
                 // TODO : panggil function editBook
-                await editBook(newBook);
 
                 Sweetalert2.fire({
                     title: "Buku berhasil diubah",
@@ -124,7 +120,6 @@ document.addEventListener(RENDER_EVENT, async function () {
     const bookList = document.getElementById("book-lists");
 
     // TODO : panggil function getAllBooks
-    const BOOKS = await getAllBooks();
 
     bookList.innerHTML = "";
     let index = 1;
@@ -136,6 +131,5 @@ document.addEventListener(RENDER_EVENT, async function () {
 
 document.addEventListener("DOMContentLoaded", async () => {
     AOS.init();
-
     document.dispatchEvent(new Event(RENDER_EVENT));
 });
