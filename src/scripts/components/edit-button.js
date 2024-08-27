@@ -1,15 +1,15 @@
 class EditButton extends HTMLElement {
-    constructor() {
-        super();
-        this._shadowRoot = this.attachShadow({ mode: "open" });
-    }
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this._shadowRoot.innerHTML = `
+  render() {
+    this._shadowRoot.innerHTML = `
             <style>
                 button {
                     color: #fff;
@@ -23,7 +23,7 @@ class EditButton extends HTMLElement {
             </style>
             <button>Edit</button>
         `;
-    }
+  }
 }
 
 customElements.define("edit-button", EditButton);

@@ -1,15 +1,15 @@
 class DeleteButton extends HTMLElement {
-    constructor() {
-        super();
-        this._shadowRoot = this.attachShadow({ mode: "open" });
-    }
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: "open" });
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this._shadowRoot.innerHTML = `
+  render() {
+    this._shadowRoot.innerHTML = `
             <style>
                 button {
                     color: #fff;
@@ -25,7 +25,7 @@ class DeleteButton extends HTMLElement {
             </style>
             <button>Hapus</button>
         `;
-    }
+  }
 }
 
 customElements.define("delete-button", DeleteButton);

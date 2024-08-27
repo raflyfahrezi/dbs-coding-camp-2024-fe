@@ -5,15 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "start-dev": "webpack-dev-server --config webpack.dev.js"
+    "start-dev": "webpack-dev-server --config webpack.dev.js",
+    "format": "prettier ./src --write"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "aos": "^3.0.0-beta.6",
+    "axios": "^1.7.5",
     "bookshelf-app": "file:",
     "install": "^0.13.0",
     "npm": "^10.8.2",
+    "prettier": "^3.3.3",
     "sweetalert2": "^11.12.4"
   },
   "devDependencies": {

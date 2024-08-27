@@ -1,15 +1,15 @@
 class Footer extends HTMLElement {
-    constructor() {
-        super();
-        this._shadowRoot = this.attachShadow({ mode: "closed" });
-    }
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: "closed" });
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this._shadowRoot.innerHTML = `
+  render() {
+    this._shadowRoot.innerHTML = `
             <style>
                 footer {
                     box-sizing: border-box;
@@ -23,7 +23,7 @@ class Footer extends HTMLElement {
                 <p>2024 - DBS Foundation Coding Camp</p>
             </footer>
         `;
-    }
+  }
 }
 
 customElements.define("app-footer", Footer);
